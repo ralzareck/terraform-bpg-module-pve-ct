@@ -25,6 +25,17 @@ Here is the list of required providers:
 
 No modules.
   
+## Resources
+
+| Name | Type |
+|------|------|
+| [proxmox_virtual_environment_container.pve_ct](https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_container) | resource |
+| [proxmox_virtual_environment_firewall_options.pve_ct_fw_opts](https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_firewall_options) | resource |
+| [proxmox_virtual_environment_firewall_rules.pve_ct_fw_rules](https://registry.terraform.io/providers/bpg/proxmox/latest/docs/resources/virtual_environment_firewall_rules) | resource |
+| [random_password.ct_root_pw](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [terraform_data.bootstrap_ct](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [time_sleep.wait_for_ct](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
+  
 ## Inputs
 
 Here are the input variables of the module:
