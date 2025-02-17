@@ -14,11 +14,11 @@ It can be based on an already deployed CT template, or an existing LXC template.
 
 Here is the list of required providers:
 
-| Name                                                                             | Version   |
-| -------------------------------------------------------------------------------- | --------- |
-| [bgp/proxmox](https://search.opentofu.org/provider/bpg/proxmox/v0.66.0)          | >= 0.66.0 |
-| [hashicorp/random](https://search.opentofu.org/provider/hashicorp/random/latest) | ~> 3.0.0  |
-| [hashicorp/time](https://search.opentofu.org/provider/hashicorp/time/latest)     | ~> 0.0    |
+| Name                                                                         | Version   |
+| ---------------------------------------------------------------------------- | --------- |
+| [bgp/proxmox](https://registry.terraform.io/providers/bpg/proxmox)           | >= 0.66.0 |
+| [hashicorp/random](https://registry.terraform.io/providers/hashicorp/random) | ~> 3.0.0  |
+| [hashicorp/time](https://registry.terraform.io/providers/hashicorp/time)     | ~> 0.0    |
 
 <!-- BEGIN_TF_DOCS -->
 ## Modules
