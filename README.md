@@ -24,7 +24,7 @@ Here is the list of required providers:
 ## Modules
 
 No modules.
-  
+
 ## Resources
 
 | Name | Type |
@@ -35,7 +35,7 @@ No modules.
 | [random_password.ct_root_pw](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [terraform_data.bootstrap_ct](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [time_sleep.wait_for_ct](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
-  
+
 ## Inputs
 
 Here are the input variables of the module:
@@ -68,5 +68,4 @@ Here are the input variables of the module:
 | <a name="input_ct_fw_group"></a> [ct\_fw\_group](#input\_ct\_fw\_group) | Firewall Security Groups of the container. | <pre>map(object({<br/>    enabled   = optional(bool, true)<br/>    iface     = optional(string)<br/>    comment   = optional(string)<br/>  }))</pre> | `null` | $\color{red}{no}$ |
 | <a name="input_ct_ssh_privkey"></a> [ct\_ssh\_privkey](#input\_ct\_ssh\_privkey) | File containing ssh private key to be used for container bootstrap. | `string` | `null` | $\color{red}{no}$ |
 | <a name="input_ct_bootstrap"></a> [ct\_bootstrap](#input\_ct\_bootstrap) | List of paths to script files to be executed after container creation. Scripts will be executed in the order provided. | <pre>map(object({<br/>    script\_path = optional(string)<br/>    arguments   = optional(string)<br/>  }))</pre> | `{}` | $\color{red}{no}$ |
-  
 <!-- END_TF_DOCS -->
