@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 -->
-# terraform-module-pve-ct
+# terraform-bpg-module-pve-ct
 
 Based on [bpg's provider](https://github.com/bpg/terraform-provider-proxmox)
 
