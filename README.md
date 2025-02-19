@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 -->
-# terraform-module-pve-ct
+# terraform-bpg-module-pve-ct
 
 Based on [bpg's provider](https://github.com/bpg/terraform-provider-proxmox)
 
@@ -46,7 +46,7 @@ Here are the input variables of the module:
 | <a name="input_ct_type"></a> [ct\_type](#input\_ct\_type) | The source type used for the creation of the container. Can either be 'clone' or 'template'. | `string` | `n/a` | $\color{green}{yes}$ |
 | <a name="input_ct_template"></a> [ct\_template](#input\_ct\_template) | Defines if the container should be converted to a template or not. | `bool` | `false` | $\color{red}{no}$ |
 | <a name="input_src_clone"></a> [src\_clone](#input\_src\_clone) | The target Container to clone. Can not be used with 'src\_file' | <pre>object({<br/>    datastore\_id = string<br/>    node\_name    = optional(string)<br/>    tpl\_id       = number<br/>  })</pre> | `null` | $\color{red}{no}$ |
-| <a name="input_src_file"></a> [src\_file](#input\_src\_file) | The target ISO file to use as base for the Container. Cannot be used with 'src\_clone' | <pre>object({<br/>    datastore\_id        = string<br/>    file\_name           = string<br/>  })</pre> | `null` | $\color{red}{no}$ |
+| <a name="input_src_file"></a> [src\_file](#input\_src\_file) | The target template file to use as base for the Container. Cannot be used with 'src\_clone' | <pre>object({<br/>    datastore\_id        = string<br/>    file\_name           = string<br/>  })</pre> | `null` | $\color{red}{no}$ |
 | <a name="input_ct_name"></a> [ct\_name](#input\_ct\_name) | The name of the Container. | `string` | `n/a` | $\color{green}{yes}$ |
 | <a name="input_ct_id"></a> [ct\_id](#input\_ct\_id) | The ID of the Container. | `number` | `n/a` | $\color{green}{yes}$ |
 | <a name="input_ct_description"></a> [ct\_description](#input\_ct\_description) | The description of the Container. | `string` | `null` | $\color{red}{no}$ |

@@ -44,7 +44,7 @@ variable "src_file" {
     datastore_id        = string
     file_name           = string
   })
-  description           = "The target ISO file to use as base for the Container. Cannot be used with 'src_clone'"
+  description           = "The target template file to use as base for the Container. Cannot be used with 'src_clone'"
   nullable              = true
   default               = null
 }
@@ -90,7 +90,7 @@ variable "ct_pool" {
 
   validation {
     condition     = can(regex("[A-Za-z0-9_-]{0,63}", var.ct_pool)) || var.ct_pool == null
-    error_message = "value"
+    error_message = "This variable is constrained by the pool name requirements set forth by ProxmoxVE."
   }
 }
 
@@ -196,7 +196,7 @@ variable "ct_net_ifaces" {
 
   validation {
     condition     = alltrue([for k,v in var.ct_net_ifaces : can(regex("net\\d+", k))])
-    error_message = "The IDs (keys) of the network interfaces must respect the following convention: net[number]."
+    error_message = "The IDs (keys) of the network interfaces must respect the following convention: net[id]."
   }
 }
 
