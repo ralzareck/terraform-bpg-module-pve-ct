@@ -53,7 +53,7 @@ jobs:
           git-commit-message: '[DOCS] Generate README.md'
 
   pre-commit:
-    needs: collect-inputs
+    needs: update-docs
     name: Pre-Commit
     runs-on: ubuntu-latest
     steps:
