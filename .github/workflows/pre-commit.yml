@@ -50,7 +50,7 @@ jobs:
           output-file: 'README.md'
           output-method: 'inject'
           git-push: 'true'
-          git-commit-message: '[DOCS] Generate README.md'
+          git-commit-message: '[Docs] Generate README.md'
 
   pre-commit:
     needs: update-docs
