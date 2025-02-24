@@ -1,32 +1,10 @@
 # =============================================================================
-# ===== Provider ==============================================================
-# =============================================================================
-
-terraform {
-  required_providers {
-    proxmox = {
-      version = ">= 0.66"
-      source  = "bpg/proxmox"
-    }
-    random = {
-      version = "~> 3"
-      source  = "hashicorp/random"
-    }
-    time = {
-      source  = "hashicorp/time"
-      version = "~> 0"
-    }
-  }
-}
-
-
-# =============================================================================
 # = CT Creation ===============================================================
 # =============================================================================
 
 locals {
   test_user_passwd = var.ct_init.user == null ? null : var.ct_init.user.password
-  test_user_keys = var.ct_init.user == null ? null : var.ct_init.user.keys
+  test_user_keys   = var.ct_init.user == null ? null : var.ct_init.user.keys
 }
 
 
@@ -39,7 +17,7 @@ resource "random_password" "ct_root_pw" {
 
 resource "proxmox_virtual_environment_container" "pve_ct" {
   # Proxmox
-  node_name    = var.pve_node
+  node_name = var.pve_node
 
   # CT Information
   description  = var.ct_description
@@ -51,7 +29,7 @@ resource "proxmox_virtual_environment_container" "pve_ct" {
   template     = var.ct_template
 
   # Boot settings
-  started      = var.ct_start.on_deploy
+  started       = var.ct_start.on_deploy
   start_on_boot = var.ct_start.on_boot
 
   startup {
@@ -74,8 +52,8 @@ resource "proxmox_virtual_environment_container" "pve_ct" {
     for_each = (var.ct_type == "template") ? ["enabled"] : []
     content {
       # template_file_id  = (var.src_file.url == null) ? "${var.src_file.datastore_id}:vztmpl/${var.src_file.file_name}" : proxmox_virtual_environment_download_file.ct_template[0].id
-      template_file_id  = "${var.src_file.datastore_id}:vztmpl/${var.src_file.file_name}"
-      type              = var.ct_os
+      template_file_id = "${var.src_file.datastore_id}:vztmpl/${var.src_file.file_name}"
+      type             = var.ct_os
     }
   }
 
@@ -111,14 +89,14 @@ resource "proxmox_virtual_environment_container" "pve_ct" {
   dynamic "network_interface" {
     for_each = var.ct_net_ifaces
     content {
-      name         = network_interface.value.name
-      bridge       = network_interface.value.bridge
-      enabled      = network_interface.value.enabled
-      firewall     = network_interface.value.firewall
-      mac_address  = network_interface.value.mac_addr
-      mtu          = network_interface.value.mtu
-      rate_limit   = network_interface.value.rate_limit
-      vlan_id      = network_interface.value.vlan_id
+      name        = network_interface.value.name
+      bridge      = network_interface.value.bridge
+      enabled     = network_interface.value.enabled
+      firewall    = network_interface.value.firewall
+      mac_address = network_interface.value.mac_addr
+      mtu         = network_interface.value.mtu
+      rate_limit  = network_interface.value.rate_limit
+      vlan_id     = network_interface.value.vlan_id
     }
   }
 
@@ -160,8 +138,8 @@ resource "proxmox_virtual_environment_container" "pve_ct" {
 resource "proxmox_virtual_environment_firewall_options" "pve_ct_fw_opts" {
   count = (var.ct_fw_opts != null) ? 1 : 0
 
-  node_name     = proxmox_virtual_environment_container.pve_ct.node_name
-  vm_id         = proxmox_virtual_environment_container.pve_ct.vm_id
+  node_name = proxmox_virtual_environment_container.pve_ct.node_name
+  vm_id     = proxmox_virtual_environment_container.pve_ct.vm_id
 
   enabled       = var.ct_fw_opts.enabled
   dhcp          = var.ct_fw_opts.dhcp
@@ -174,8 +152,8 @@ resource "proxmox_virtual_environment_firewall_options" "pve_ct_fw_opts" {
 resource "proxmox_virtual_environment_firewall_rules" "pve_ct_fw_rules" {
   count = (var.ct_fw_rules != null || var.ct_fw_group != null) ? 1 : 0
 
-  node_name    = proxmox_virtual_environment_container.pve_ct.node_name
-  vm_id        = proxmox_virtual_environment_container.pve_ct.vm_id
+  node_name = proxmox_virtual_environment_container.pve_ct.node_name
+  vm_id     = proxmox_virtual_environment_container.pve_ct.vm_id
 
   dynamic "rule" {
     for_each = var.ct_fw_rules != null ? var.ct_fw_rules : {}
