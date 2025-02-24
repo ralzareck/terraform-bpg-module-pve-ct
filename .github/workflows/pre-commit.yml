@@ -31,8 +31,7 @@ jobs:
 
   update-docs:
     needs: collect-inputs
-    permissions:
-      contents: write
+    name: Update terraform docs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -55,6 +54,7 @@ jobs:
 
   pre-commit:
     needs: collect-inputs
+    name: Pre-Commit
     runs-on: ubuntu-latest
     steps:
       - name: Delete huge unnecessary tools folder
