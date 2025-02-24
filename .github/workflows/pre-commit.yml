@@ -10,7 +10,6 @@ on:
 env:
   TERRAFORM_DOCS_VERSION: v0.19.0
   TFLINT_VERSION: v0.53.0
-  HCLEDIT_VERSION: v0.2.3
 
 jobs:
   collect-inputs:
@@ -83,5 +82,4 @@ jobs:
           tflint-version: ${{ env.TFLINT_VERSION }}
           terraform-docs-version: ${{ env.TERRAFORM_DOCS_VERSION }}
           install-hcledit: true
-          hcledit-version: ${{ env.HCLEDIT_VERSION }}
           args: "--all-files --color always --show-diff-on-failure"
