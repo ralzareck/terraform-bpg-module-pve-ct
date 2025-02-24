@@ -3,8 +3,8 @@
 # =============================================================================
 
 variable "pve_node" {
-  type              = string
-  description       = "PVE Node name on which the VM will be created on."
+  type        = string
+  description = "PVE Node name on which the VM will be created on."
 
   validation {
     condition     = can(regex("[A-Za-z0-9.-]{1,63}", var.pve_node))
@@ -13,8 +13,8 @@ variable "pve_node" {
 }
 
 variable "ct_type" {
-  type              = string
-  description       = "The source type used for the creation of the container. Can either be 'clone' or 'template'."
+  type        = string
+  description = "The source type used for the creation of the container. Can either be 'clone' or 'template'."
 
   validation {
     condition     = contains(["clone", "template"], var.ct_type)
@@ -34,19 +34,19 @@ variable "src_clone" {
     node_name    = optional(string)
     tpl_id       = number
   })
-  description    = "The target Container to clone. Can not be used with 'src_file'"
-  nullable       = true
-  default        = null
+  description = "The target Container to clone. Can not be used with 'src_file'"
+  nullable    = true
+  default     = null
 }
 
 variable "src_file" {
   type = object({
-    datastore_id        = string
-    file_name           = string
+    datastore_id = string
+    file_name    = string
   })
-  description           = "The target template file to use as base for the Container. Cannot be used with 'src_clone'"
-  nullable              = true
-  default               = null
+  description = "The target template file to use as base for the Container. Cannot be used with 'src_clone'"
+  nullable    = true
+  default     = null
 }
 
 # =============================================================================
@@ -95,7 +95,7 @@ variable "ct_pool" {
 }
 
 variable "ct_tags" {
-  type = list(string)
+  type        = list(string)
   description = "A list of tags associated to the Container."
   default     = []
 }
@@ -108,8 +108,8 @@ variable "ct_start" {
     up_delay   = optional(number, 0)
     down_delay = optional(number, 0)
   })
-  description  = "Defines startup and shutdown behavior of the container. "
-  default      = {
+  description = "Defines startup and shutdown behavior of the container. "
+  default = {
     on_deploy  = true
     on_boot    = false
     order      = 0
@@ -119,9 +119,9 @@ variable "ct_start" {
 }
 
 variable "ct_os" {
-  type = string
+  type        = string
   description = "The Operating System configuration of the container."
-  default = "unmanaged"
+  default     = "unmanaged"
 
   validation {
     condition     = contains(["alpine", "archlinux", "centos", "debian", "devuan", "fedora", "gentoo", "nixos", "opensuse", "ubuntu", "unmanaged"], var.ct_os)
@@ -131,9 +131,9 @@ variable "ct_os" {
 
 variable "ct_cpu" {
   type = object({
-    arch      = optional(string)
-    cores     = optional(number, 2)
-    units     = optional(number)
+    arch  = optional(string)
+    cores = optional(number, 2)
+    units = optional(number)
   })
   description = "The CPU Configuration of the container."
   default     = {}
@@ -174,7 +174,7 @@ variable "ct_disk" {
     datastore_id = string
     size         = number
   })
-  description    = "The Disks configuration of the container."
+  description = "The Disks configuration of the container."
 }
 
 variable "ct_net_ifaces" {
@@ -191,28 +191,28 @@ variable "ct_net_ifaces" {
     ipv4_addr  = string
     ipv4_gw    = string
   }))
-  description  = "The network interfaces configuration of the container."
-  default      = {}
+  description = "The network interfaces configuration of the container."
+  default     = {}
 
   validation {
-    condition     = alltrue([for k,v in var.ct_net_ifaces : can(regex("net\\d+", k))])
+    condition     = alltrue([for k, v in var.ct_net_ifaces : can(regex("net\\d+", k))])
     error_message = "The IDs (keys) of the network interfaces must respect the following convention: net[id]."
   }
 }
 
 variable "ct_init" {
   type = object({
-    user       = optional(object({
+    user = optional(object({
       password = optional(string)
       keys     = optional(list(string))
     }))
-    dns        = optional(object({
-      domain   = optional(string)
-      servers  = optional(list(string))
+    dns = optional(object({
+      domain  = optional(string)
+      servers = optional(list(string))
     }))
   })
-  description  = "The initialization configuration of the container."
-  default      = {}
+  description = "The initialization configuration of the container."
+  default     = {}
 }
 
 # =============================================================================
@@ -230,9 +230,9 @@ variable "ct_fw_opts" {
     ndp           = optional(bool)
     radv          = optional(bool)
   })
-  description     = "Firewall settings of the container."
-  nullable        = true
-  default         = null
+  description = "Firewall settings of the container."
+  nullable    = true
+  default     = null
 }
 
 variable "ct_fw_rules" {
@@ -256,9 +256,9 @@ variable "ct_fw_rules" {
 
 variable "ct_fw_group" {
   type = map(object({
-    enabled   = optional(bool, true)
-    iface     = optional(string)
-    comment   = optional(string)
+    enabled = optional(bool, true)
+    iface   = optional(string)
+    comment = optional(string)
   }))
   description = "Firewall Security Groups of the container."
   nullable    = true
