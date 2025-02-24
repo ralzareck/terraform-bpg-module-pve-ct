@@ -1,5 +1,5 @@
 ---
-name: Generate terraform docs
+name: Pre-Commit and Generate terraform docs
 on:
   pull_request:
     branches:
