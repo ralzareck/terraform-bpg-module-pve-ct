@@ -50,7 +50,7 @@ jobs:
           output-file: 'README.md'
           output-method: 'inject'
           git-push: 'true'
-          git-commit-message: '[tf-docs] Generate README.md'
+          git-commit-message: '[DOCS] Generate README.md'
 
   pre-commit:
     needs: collect-inputs
@@ -84,4 +84,3 @@ jobs:
           terraform-docs-version: v${{ env.TERRAFORM_DOCS_VERSION }}
           install-hcledit: true
           hcledit-version: ${{ env.HCLEDIT_VERSION }}
-          args: "--all-files --color always --show-diff-on-failure"
