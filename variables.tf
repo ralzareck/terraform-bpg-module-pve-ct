@@ -61,6 +61,8 @@ variable "ct_name" {
 variable "ct_id" {
   type        = number
   description = "The ID of the Container."
+  nullable    = true
+  default     = null
 }
 
 variable "ct_description" {
