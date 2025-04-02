@@ -48,7 +48,7 @@ Here are the input variables of the module:
 | <a name="input_src_clone"></a> [src\_clone](#input\_src\_clone) | The target Container to clone. Can not be used with 'src\_file' | <pre>object({<br/>    datastore\_id = string<br/>    node\_name    = optional(string)<br/>    tpl\_id       = number<br/>  })</pre> | `null` | $\color{red}{no}$ |
 | <a name="input_src_file"></a> [src\_file](#input\_src\_file) | The target template file to use as base for the Container. Cannot be used with 'src\_clone' | <pre>object({<br/>    datastore\_id = string<br/>    file\_name    = string<br/>  })</pre> | `null` | $\color{red}{no}$ |
 | <a name="input_ct_name"></a> [ct\_name](#input\_ct\_name) | The name of the Container. | `string` | `n/a` | $\color{green}{yes}$ |
-| <a name="input_ct_id"></a> [ct\_id](#input\_ct\_id) | The ID of the Container. | `number` | `n/a` | $\color{green}{yes}$ |
+| <a name="input_ct_id"></a> [ct\_id](#input\_ct\_id) | The ID of the Container. | `number` | `null` | $\color{red}{no}$ |
 | <a name="input_ct_description"></a> [ct\_description](#input\_ct\_description) | The description of the Container. | `string` | `null` | $\color{red}{no}$ |
 | <a name="input_ct_unprivileged"></a> [ct\_unprivileged](#input\_ct\_unprivileged) | Defines if the container runs as unprivileged on the host. | `bool` | `true` | $\color{red}{no}$ |
 | <a name="input_ct_protection"></a> [ct\_protection](#input\_ct\_protection) | Defines if protection is enabled on the container. | `bool` | `false` | $\color{red}{no}$ |
