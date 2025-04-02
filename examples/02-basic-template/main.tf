@@ -10,12 +10,12 @@ module "pve_vm" {
   ct_type  = "template"
   pve_node = var.proxmox_node
 
-  src_file         = {
-    datastore_id  = "image"
-    file_name     = "debian-12-standard_12.7-1_amd64.tar.zst"
+  src_file = {
+    datastore_id = "image"
+    file_name    = "debian-12-standard_12.7-1_amd64.tar.zst"
   }
 
-  ct_name = "example-basic-templatec"
+  ct_name     = "example-basic-templatec"
   ct_template = true
 
   ct_disk = {
