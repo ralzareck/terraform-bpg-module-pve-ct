@@ -127,7 +127,7 @@ variable "ct_start" {
   description = "Defines startup and shutdown behavior of the container. "
   default = {
     on_deploy  = true
-    on_boot    = false
+    on_boot    = true
     order      = 0
     up_delay   = 0
     down_delay = 0
